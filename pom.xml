@@ -15,7 +15,10 @@
 	<description> Telegram bot for Javarush from community to community</description>
 	<properties>
 		<java.version>11</java.version>
+		<telegram-starter.version>5.6.0</telegram-starter.version>
+		<junit-vintage-engine.version>5.8.2</junit-vintage-engine.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -27,6 +30,20 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.telegram</groupId>
+			<artifactId>telegrambots-spring-boot-starter</artifactId>
+			<version>${telegram-starter.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<version>${junit-vintage-engine.version}</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
