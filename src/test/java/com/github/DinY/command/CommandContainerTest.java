@@ -2,6 +2,8 @@ package com.github.DinY.command;
 
 
 import com.github.DinY.service.SendBotMessageService;
+import com.github.DinY.service.TelegramUserService;
+import com.github.DinY.service.TelegramUserServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +20,8 @@ public class CommandContainerTest {
     @BeforeEach
     public void init(){
         SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
-        commandContainer = new CommandContainer(sendBotMessageService);
+        TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
+        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService);
     }
 
     @Test
