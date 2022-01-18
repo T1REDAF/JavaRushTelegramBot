@@ -7,6 +7,8 @@ import static com.github.DinY.command.StartCommand.START_MESSAGE;
 @DisplayName("Unit-level testing for StartCommand")
 public class StartCommandTest extends AbstractCommandTest{
 
+
+
     @Override
     String getCommandName() {
         return START.getCommandName();
@@ -19,6 +21,6 @@ public class StartCommandTest extends AbstractCommandTest{
 
     @Override
     Command getCommand() {
-        return new StartCommand(sendBotMessageService, telegramUserService);
+        return new StartCommand(sendBotMessageService);
     }
 }
