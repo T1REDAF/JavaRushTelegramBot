@@ -1,6 +1,8 @@
 package com.github.DinY.bot;
 
 import com.github.DinY.command.CommandContainer;
+import com.github.DinY.javarushclient.JavaRushGroupClient;
+import com.github.DinY.service.GroupSubService;
 import com.github.DinY.service.SendBotMessageServiceImpl;
 import com.github.DinY.service.TelegramUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +29,8 @@ public class JavaRushTelegramBot extends TelegramLongPollingBot {
     private final CommandContainer commandContainer;
 
     @Autowired
-    public JavaRushTelegramBot(TelegramUserService telegramUserService) {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService);
+    public JavaRushTelegramBot(TelegramUserService telegramUserService, JavaRushGroupClient groupClient, GroupSubService groupSubService) {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService, groupClient, groupSubService);
     }
 
     @Override
