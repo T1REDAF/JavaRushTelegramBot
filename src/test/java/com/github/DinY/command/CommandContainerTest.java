@@ -1,6 +1,8 @@
 package com.github.DinY.command;
 
 
+import com.github.DinY.javarushclient.JavaRushGroupClient;
+import com.github.DinY.service.GroupSubService;
 import com.github.DinY.service.SendBotMessageService;
 import com.github.DinY.service.TelegramUserService;
 import com.github.DinY.service.TelegramUserServiceImpl;
@@ -8,6 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.util.Arrays;
@@ -21,7 +24,9 @@ public class CommandContainerTest {
     public void init(){
         SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
         TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
-        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService);
+        JavaRushGroupClient javaRushGroupClient = Mockito.mock(JavaRushGroupClient.class);
+        GroupSubService groupSubService = Mockito.mock(GroupSubService.class);
+        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService, javaRushGroupClient, groupSubService);
     }
 
     @Test
