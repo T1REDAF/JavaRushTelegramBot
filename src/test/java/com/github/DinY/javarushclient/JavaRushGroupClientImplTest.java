@@ -1,6 +1,7 @@
 package com.github.DinY.javarushclient;
 
 
+
 import com.github.DinY.javarushclient.dto.GroupDiscussionInfo;
 import com.github.DinY.javarushclient.dto.GroupInfo;
 import com.github.DinY.javarushclient.dto.GroupRequestArgs;
@@ -115,5 +116,18 @@ class JavaRushGroupClientTest {
         Assertions.assertEquals(16, groupById.getId());
         Assertions.assertEquals(TECH, groupById.getType());
         Assertions.assertEquals("android", groupById.getKey());
+    }
+
+    @Test
+    public void shouldNotProperlyGetGroupById() {
+        //given
+        Integer androidGroupId = Integer.MAX_VALUE;
+
+        //when
+        GroupDiscussionInfo groupById = groupClient.getGroupById(androidGroupId);
+
+        //then
+        Assertions.assertNull(groupById.getKey());
+        Assertions.assertNull(groupById.getId());
     }
 }
