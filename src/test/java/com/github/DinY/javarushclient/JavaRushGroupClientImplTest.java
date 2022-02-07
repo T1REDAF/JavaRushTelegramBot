@@ -1,7 +1,5 @@
 package com.github.DinY.javarushclient;
 
-
-
 import com.github.DinY.javarushclient.dto.GroupDiscussionInfo;
 import com.github.DinY.javarushclient.dto.GroupInfo;
 import com.github.DinY.javarushclient.dto.GroupRequestArgs;
