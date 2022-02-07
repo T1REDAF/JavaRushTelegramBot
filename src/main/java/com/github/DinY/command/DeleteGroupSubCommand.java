@@ -57,7 +57,7 @@ public class DeleteGroupSubCommand implements Command {
                 sendBotMessageService.sendMessage(chatId, "Не нашел такой группы =/");
             }
         } else {
-            sendBotMessageService.sendMessage(chatId, "Неправильный формат ID группы.\n " +
+            sendBotMessageService.sendMessage(chatId, "неправильный формат ID группы.\n " +
                     "ID должно быть целым положительным числом");
         }
     }
