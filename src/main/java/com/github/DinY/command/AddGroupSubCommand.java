@@ -22,6 +22,7 @@ import static com.github.DinY.command.CommandName.ADD_GROUP_SUB;
 /**
  * Add Group subscription {@link Command}.
  */
+//todo add unit test for the command logic.
 public class AddGroupSubCommand implements Command {
 
     private final SendBotMessageService sendBotMessageService;
@@ -40,7 +41,6 @@ public class AddGroupSubCommand implements Command {
         if (getMessage(update).equalsIgnoreCase(ADD_GROUP_SUB.getCommandName())) {
             sendGroupIdList(getChatId(update));
             return;
-
         }
         String groupId = getMessage(update).split(SPACE)[1];
         String chatId = getChatId(update);
@@ -52,7 +52,7 @@ public class AddGroupSubCommand implements Command {
             GroupSub savedGroupSub = groupSubService.save(chatId, groupById);
             sendBotMessageService.sendMessage(chatId, "Подписал на группу " + savedGroupSub.getTitle());
         } else {
-            sendGroupNotFound(chatId, groupId);
+            sendNotValidGroupID(chatId, groupId);
         }
     }
 
@@ -61,14 +61,19 @@ public class AddGroupSubCommand implements Command {
         sendBotMessageService.sendMessage(chatId, String.format(groupNotFoundMessage, groupId));
     }
 
+    private void sendNotValidGroupID(String chatId, String groupId) {
+        String groupNotFoundMessage = "Неправильный ID группы = \"%s\"";
+        sendBotMessageService.sendMessage(chatId, String.format(groupNotFoundMessage, groupId));
+        ;    }
+
     private void sendGroupIdList(String chatId) {
         String groupIds = javaRushGroupClient.getGroupList(GroupRequestArgs.builder().build()).stream()
                 .map(group -> String.format("%s - %s \n", group.getTitle(), group.getId()))
                 .collect(Collectors.joining());
 
-        String message = "Чтобы подписаться на группу - передай комадну вместе с ID группы. \n" +
-                "Например: /addGroupSub 16. \n\n" +
-                "я подготовил список всех групп - выберай какую хочешь :) \n\n" +
+        String message = "Чтобы подписаться на группу - передай команду вместе с ID группы. \n" +
+                "Например: /addGroupSub 30 \n\n" +
+                "я подготовил список всех групп - выбирай какую хочешь :) \n\n" +
                 "имя группы - ID группы \n\n" +
                 "%s";
 

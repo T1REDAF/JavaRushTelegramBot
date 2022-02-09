@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+
 /**
  * {@link Service} for handling {@link TelegramUser} entity.
  */
@@ -23,7 +24,7 @@ public interface TelegramUserService {
      *
      * @return the collection of the active {@link TelegramUser} objects.
      */
-    List<TelegramUser> retrieveAllActiveUsers();
+    List<TelegramUser> findAllActiveUsers();
 
     /**
      * Find {@link TelegramUser} by chatId.

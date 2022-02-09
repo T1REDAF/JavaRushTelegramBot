@@ -15,7 +15,9 @@ import static com.github.DinY.javarushclient.dto.GroupInfoType.TECH;
 @DisplayName("Integration-level testing for JavaRushGroupClientImplTest")
 class JavaRushGroupClientTest {
 
-    private final JavaRushGroupClient groupClient = new JavaRushGroupClientImpl("https://javarush.ru/api/1.0/rest");
+    public static final String JAVARUSH_API_PATH = "https://javarush.ru/api/1.0/rest";
+
+    private final JavaRushGroupClient groupClient = new JavaRushGroupClientImpl(JAVARUSH_API_PATH);
 
     @Test
     public void shouldProperlyGetGroupsWithEmptyArgs() {
@@ -84,7 +86,7 @@ class JavaRushGroupClientTest {
         Integer groupCount = groupClient.getGroupCount(args);
 
         //then
-        Assertions.assertEquals(32, groupCount);
+        Assertions.assertEquals(30, groupCount);
     }
 
     @Test

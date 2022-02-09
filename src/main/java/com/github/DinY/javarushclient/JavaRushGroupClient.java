@@ -6,7 +6,6 @@ import com.github.DinY.javarushclient.dto.GroupRequestArgs;
 import com.github.DinY.javarushclient.dto.GroupsCountRequestArgs;
 
 import java.util.List;
-
 /**
  * Client for Javarush Open API corresponds to Groups.
  */
@@ -43,4 +42,6 @@ public interface JavaRushGroupClient {
      * @return {@link GroupDiscussionInfo} object.
      */
     GroupDiscussionInfo getGroupById(Integer id);
+
+    Integer findLastArticleId(Integer groupSub);
 }
